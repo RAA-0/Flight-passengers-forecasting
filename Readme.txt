@@ -1,9 +1,7 @@
 NOTE:
-You have to add a folder called data that contains the following :
-- data/FlightML that contains the original datasets
-- data/training_pred 
-- data/customized_data
-- data/Transformed_data 
+- You have to add the original datasets to the data/FlightML folder 
+- run the training manager to build the models and encoders 
+- run the serving manager 
 
 
 TrainingManager.py and SevingManager.py 
