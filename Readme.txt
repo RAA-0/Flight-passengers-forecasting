@@ -1,7 +1,7 @@
 NOTE:
 - must add the original datasets to the data/FlightML folder 
 -must add the configurationn (airports, aircrafts, gdp_per_capita) to the Training/json_files folder 
-- run the training manager to build the models and encoders 
+- the training manager was already run. we can run it again to re-build the models and encoders 
 - run the serving manager 
 
 
