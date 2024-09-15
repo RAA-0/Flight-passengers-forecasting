@@ -9,7 +9,8 @@ class CustomizeData:
     
     def transform(self, X): 
         print("customizing....")
-        X = self.sort_by_index(X)       
+        X = self.sort_by_index(X)     
+        X = self.filter(X) 
         X = self.select_and_rename_columns(X)
         X.to_csv(f"data\\customized_data\\{self.config['type']}_customized.csv",index=False)
         print("Customiziation Done.")
