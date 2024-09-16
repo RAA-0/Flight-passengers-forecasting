@@ -4,7 +4,7 @@ from Training.data_preprocessing.FeatureExtractor import FeatureExtractor
 from Training.data_preprocessing.FeaturePreProcessing import FeaturePreProcessing
 from sklearn.pipeline import Pipeline 
 from feature_engine.datetime import DatetimeFeatures
-
+#from Training.data_preprocessing.WeatherFeaturesExtractor import WeatherFeaturesExtractor
 import pandas as pd
 
 class DataPreProcessor:
@@ -28,6 +28,7 @@ class DataPreProcessor:
             ("Feature Engineering", FeatureExtractor(indicator,self.config)),
             ("Cleaning Data", Cleaner(self.config)),
             ("datetime_features", dtf),
+            #("weather_features",WeatherFeaturesExtractor()),
             ("PreProcessing Data", FeaturePreProcessing(indicator,self.config['type'],self.config)),
         ])
 
