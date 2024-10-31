@@ -1,0 +1,41 @@
+{
+    "arrival_config":{
+        "type":"arrival",
+        "path":"data\\FlightML\\FLIGHT_LOAD_ML_202310161702_arrival.csv",
+        "result_path":"data\\Transformed_data\\Transformed_arrival.csv",
+        "date_columns":["SIBT", "EIBT", "AIBT","SOBT", "EOBT", "AOBT"],
+        "serving_path":"to_be_predicted.csv",
+        "distinct_feature": "disembarking",
+        "columns":["SIBT", "REGISTRATION", "FLIGHTNUMBER", "ORIGINICAO", "AIRLINE", "AIRCRAFTTYPEICAO", "TRANSFER_TOTAL", "DISEMBARKING_TOTAL", "TOTAL_TOTAL"],
+        "index":"SIBT",
+        "new_names":["date_time", "code", "flt_number", "origin","airline", "ac_type","transfer", "disembarking", "total"],
+        "columns_needed":["capacity", "total_lag1", "total_lag2", "total_lag3","transfer_percentage_lag1","transfer_percentage_lag2","transfer_percentage_lag3", "date_time_year", "date_time_month",
+        "date_time_hour", "date_time_day_of_month", "date_time_weekend", "airline", "ac_type","origin","total","transfer_percentage","GDP"],
+        "cat_cols":["origin","airline","ac_type"],
+        "column_to_check":["origin","GDP"],
+        "Target": ["total","transfer_percentage"],  
+        "columns_to_drop_transfer_percentage":["total_lag1", "total_lag2", "total_lag3","total","transfer_percentage","flt_number","disembarking","code","transfer"],
+        "columns_to_drop_total":["transfer_percentage_lag1","transfer_percentage_lag2","transfer_percentage_lag3","total","transfer_percentage","flt_number","disembarking","code","transfer"],
+        "total":{"metric": ["r2","rmse"],"boosting_type": "gbdt","num_leaves": 70, "n_estimators": 900,"min_gain_to_split": 0.3434343434343435, "min_child_samples": 30, "max_depth": 13,"learning_rate": 0.111, "lambda_l2": 0.021544346900318832, "lambda_l1": 0.21544346900318834, "feature_fraction": 0.8888888888888888},
+        "transfer_percentage":{"metric": ["r2","rmse"],"boosting_type": "gbdt","num_leaves": 120, "n_estimators": 100, "min_child_samples": 100, "max_depth": 10, "learning_rate": 0.21544346900318834}
+    },
+    "departure_config":{
+        "type":"departure",
+        "date_columns":["SIBT", "EIBT", "AIBT","SOBT", "EOBT", "AOBT"],
+        "path":"data\\FlightML\\FLIGHT_LOAD_ML_202310161709_depature.csv",
+        "result_path":"data\\Transformed_data\\Transformed_departure.csv",
+        "columns":["SOBT", "REGISTRATION", "FLIGHTNUMBER", "DESTINATIONICAO", "AIRLINE", "AIRCRAFTTYPEICAO", "TRANSFER_TOTAL", "JOINING_TOTAL", "TOTAL_TOTAL"],
+        "new_names":["date_time", "code", "flt_number", "destination","airline", "ac_type","transfer", "joining", "total"],
+        "distinct_feature": "joining",
+        "index":"SOBT",
+        "columns_needed":["capacity", "total_lag1", "total_lag2", "total_lag3","transfer_percentage_lag1","transfer_percentage_lag2","transfer_percentage_lag3", "date_time_year", "date_time_month",
+        "date_time_hour", "date_time_day_of_month", "date_time_weekend", "airline", "ac_type","destination","total","transfer_percentage"],
+        "column_to_check":["destination"],
+        "Target": ["total","transfer_percentage"],
+        "cat_cols":["destination","airline","ac_type"],
+        "columns_to_drop_transfer_percentage":["total_lag1", "total_lag2", "total_lag3","total","transfer_percentage","flt_number","joining","code","transfer"],
+        "columns_to_drop_total":["transfer_percentage_lag1","transfer_percentage_lag2","transfer_percentage_lag3","total","transfer_percentage","flt_number","joining","code","transfer"]
+        
+}
+}
+
