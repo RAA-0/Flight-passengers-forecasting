@@ -1,3 +1,6 @@
+The link to the percentage change prediction model :
+https://github.com/RAA-0/Percentage_changes_predictions.git
+
 NOTE:
 - must add the original datasets to the data/FlightML folder 
 -must add the configurationn (airports, aircrafts, gdp_per_capita) to the Training/json_files folder 
