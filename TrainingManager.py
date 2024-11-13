@@ -9,25 +9,19 @@ def main():
     for config in extract_config():
         data = pd.read_csv(config["path"],index_col=False,parse_dates= config['date_columns'])
         #Preprocess the data 
-        processor = DataPreProcessor(config)
-        transformed_data=processor.process(data,"T") #indicator for training phase
-            
-        #Training the models 
+        #preprocessor = DataPreProcessor(config)
+        #transformed_data=preprocessor.preprocess(data,"T") #indicator for training phase
+        transformed_data = pd.read_csv('data\\Transformed_data\\Transformed_arrival.csv')
+    
         trainer = DataTrain(config,transformed_data)
-
-        #build a model for both targets 
-        trainer.lgb_model1()
-        #trainer.lgb_model2() #both gave the same answer 
-
-        #train and evaluate each model 
-        trainer.train_and_evaluate()
+        trainer.start_training()
 
 def extract_config():
     with open("config.json",'r') as f:
         config = json.load(f)
     dep_config = config.get("departure_config",{})
     arriv_config =config.get("arrival_config",{})
-    return [arriv_config,dep_config]
+    return [arriv_config]
 
 if __name__ == "__main__":
     main()

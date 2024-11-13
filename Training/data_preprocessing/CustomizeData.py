@@ -9,8 +9,8 @@ class CustomizeData:
     
     def transform(self, X): 
         print("customizing....")
-        X = self.sort_by_index(X)     
-        X = self.filter(X) 
+        X = self.sort_by_index(X)   
+        X=self.filter(X)    
         X = self.select_and_rename_columns(X)
         X.to_csv(f"data\\customized_data\\{self.config['type']}_customized.csv",index=False)
         print("Customiziation Done.")
@@ -21,7 +21,6 @@ class CustomizeData:
         return X
     
     def filter(self,X):
-        #2-remove the data in specific years (2020-2021) due to the pandemic  
         X = X[~X[self.config['index']].dt.year.isin([2018,2019,2020,2021])]
         return X
     

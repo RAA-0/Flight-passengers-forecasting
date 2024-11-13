@@ -18,7 +18,7 @@ class FeaturePreProcessing:
     
     def OneHotencoding(self,X):
         if self.indicator == 'T':
-            encoder = OneHotEncoder(sparse_output=False, dtype=int)
+            encoder = OneHotEncoder(sparse_output=False, dtype=int,handle_unknown='ignore')
             encoded_data = encoder.fit_transform(X[self.config["cat_cols"]])
             encoded_df = pd.DataFrame(encoded_data, columns=encoder.get_feature_names_out(self.config["cat_cols"]), dtype=int)
             encoded_df.index = X.index
@@ -32,16 +32,5 @@ class FeaturePreProcessing:
             encoded_df.index = X.index
             result_df = pd.concat([X.drop(columns=self.config["cat_cols"]), encoded_df], axis=1)
         return result_df
-    '''
-    def labelencoding(self,X):
-        if self.indicator =='T':
-                # Apply Label Encoding to all categorical columns
-            for col in categorical_columns:
-                    le = LabelEncoder()
-                    X[col] = le.fit_transform(X[col])
-                    #label_encoders[col] = le  # Save the encoder
-                    joblib.dump(le, f'Training\\encoders\\{col}_{self.t}_label_encoder.pkl')
-   
 
-    '''
           
