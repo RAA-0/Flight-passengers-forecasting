@@ -79,11 +79,11 @@ class GlobalHealthScraper(AbstractScraper):
                         json.dump(self.data,w2w,indent=4)
     
     def fix_form(self):
-        health_terms = ['emergency','pandemic', 'virus', 'outbreak', 'covid', 'coronavirus','disease']
-        ghe = GlobalHealthExtractor(self.data,self.config['global_health']['aux_df'],health_terms,self.df_path)
+        ghe = GlobalHealthExtractor(self.data,self.config['global_health']['aux_df'],self.config['keywords'],self.df_path)
         ghe.run()
     
     def detect_event(self,date_input):
+        print("health  news detection.. ")
         events =[]
         with open(self.file_path) as f:
             scraped_news = json.load(f)
@@ -99,6 +99,7 @@ class GlobalHealthScraper(AbstractScraper):
         if not matching_rows.empty:
             health_crisis = matching_rows.iloc[0]['health_crisis_month']
         else:
+            return []
             if date_input < datetime.now() or ((date_input.year == datetime.now().year) and (date_input.month== datetime.now().month)):
                 scraper = GlobalHealthScraper([year])
                 new_news = scraper.run()

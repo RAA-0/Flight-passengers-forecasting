@@ -6,9 +6,9 @@ import json
 import random
 
 class DataTrainer:
-    def __init__(self,data,target):
-        self.target=target
+    def __init__(self,data,config):
         self.data = data
+        self.config = config
         self.classify_events()
         random.seed(42)
         
@@ -20,7 +20,7 @@ class DataTrainer:
 
 
     def prophet_model(self):
-        print(f'building moddell for {self.target}s....')
+        print(f'Building prophet model for {self.config.type}s....')
         prophet_model = Prophet(holidays=self.holidays_data)
         for event in self.non_recurrent_events:
             prophet_model.add_regressor(event)
@@ -29,16 +29,16 @@ class DataTrainer:
     def train(self,model):
         print("training....")
         self.data['start_date'] = pd.to_datetime(self.data['start_date'])
-        self.data.rename(columns={'start_date': 'ds', f'{self.target}_percentage_change': 'y'}, inplace=True)
+        self.data.rename(columns={'start_date': 'ds', f'{self.config.type}_percentage_change': 'y'}, inplace=True)
         self.data['ds'] = pd.to_datetime(self.data['ds'])
         train_data, test_data = self.split_data()
         model.fit(train_data)
         self.evaluate_model(model,test_data)
-        joblib.dump(model,f'models\\prophet_{self.target}_model.joblib')
+        joblib.dump(model,self.config.prophet_model_path)
         return model
     
     def evaluate_model(self,model,test_data):
-        print(f'evaluating {self.target}s model...')
+        print(f'evaluating {self.config.type}s model...')
         forecast = model.predict(test_data)
         r2 = r2_score(test_data['y'],forecast['yhat'])
         mse = mean_squared_error(test_data['y'],forecast['yhat'])
@@ -47,7 +47,7 @@ class DataTrainer:
     def classify_events(self):
         self.non_recurrent_events = []
         self.holiday_events =[]
-        with open('event_config.json') as r:
+        with open('New_model//event_config.json') as r:
             event_config=json.load(r)
 
         for event in event_config.keys():

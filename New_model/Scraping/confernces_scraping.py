@@ -11,7 +11,7 @@ import json
 import pandas as pd
 import ast 
 
-class ConferenceScraping(AbstractScraper):
+class ConferenceScraper(AbstractScraper):
     def __init__(self):
         super().__init__("conferences")
          
@@ -23,7 +23,7 @@ class ConferenceScraping(AbstractScraper):
             print("there are no news for this date")
         self.fix_form()
 
-    def scrape_news(self, date):
+    def scrape_news(self, date='All'):
         news=defaultdict(lambda: defaultdict(list))
         dates = []
         driver =super().get_url(self.website_url)
@@ -103,21 +103,40 @@ class ConferenceScraping(AbstractScraper):
         new_df.to_csv(self.df_path,index=False)
 
     def detect_event(self,date_input):
+        print("conferences detection....")
         events =[]
         with open(self.file_path) as f:
             scraped_news = json.load(f)
         df = pd.read_csv(self.df_path)
-
         date_input = pd.to_datetime(date_input)
         year = date_input.year
         month = date_input.month
         day = date_input.day
+        def get_event():
+            events =[]
+            matching_rows = df[(df['year'].astype(int) == year) & (df['month'].astype(int)== month) & (df['day'].astype(int)== day) ]
+            if not matching_rows.empty:
+                conference_event = matching_rows.iloc[0]['conferences']
+                conference_event = ast.literal_eval(conference_event)  
+                if any(word in conference_event for word in self.config[self.event]['impactful_event']):
+                    events.extend(conference_event)
+                else: events = []
+
+            return events
+
+        df['date'] = pd.to_datetime(df[['year', 'month','day']])
+        df['date']=pd.to_datetime(df['date'])
+        max_date = df['date'].max()
+        if date_input<=max_date:
+            events = get_event()
+        else:
+            def get_month(target_value):
+                for key, value in self.mapping.items():
+                    if value == target_value:
+                        return key
+            date_string = str(get_month(str(month).zfill(2)))+" "+str(year)
+            self.run(date_string)
+            events = get_event()
         
-        matching_rows = df[(df['year'].astype(int) == year) & (df['month'].astype(int)== month) & (df['day'].astype(int)== day) ]
-        
-        if not matching_rows.empty:
-            conference_event = matching_rows.iloc[0]['conferences']
-            conference_event = ast.literal_eval(conference_event)  
-            events.extend(conference_event)
         return events
 

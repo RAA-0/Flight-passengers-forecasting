@@ -4,42 +4,35 @@ import pandas as pd
 from Training.DataPreprocessing import DataPreProcessor
 from Training.DataTrainer import DataTrain
 import json
+from object_models.pax_factory import PaxFactory
+from serving.serving_data import DataServer
+from serving.NewPredictor import NewPredictor
+from New_model.Training.Preprocessingg import PreProcessor
 
-
-"""it works by providing it with a csv file of flights you'd like to predict their values """
         
 def main():
-    for config in extract_config():
-        data = pd.read_csv(config["path"],index_col=False,parse_dates= config['date_columns'])
-        training_data = pd.read_csv(config["result_path"],index_col=False)
-        data.sort_values(by=config['index'])
-        #serving_data = data.sample(n=394371, random_state=42)
-        serving_data = data[data[config['index']].dt.year.isin([2020,2021])]
+    for flighttype in ['arrival','departure']:
+        serving_config = PaxFactory.create_config(flighttype,'serving')
+        serving_data = pd.read_csv(serving_config.serving_data_path,index_col=False,parse_dates= serving_config.date_columns)
+        training_data = pd.read_csv(serving_config.training_result_path,index_col=False)
+        serving_data.sort_values(by=serving_config.date_time_field)
 
-        #Preprocess the data 
-        processor = DataPreProcessor(config)
-        transformed_data=processor.preprocess(serving_data,"S")
-        #transformed_data = new_lag_features(training_data,transformed_data)
-            
-            
-        data_predictions = transformed_data.copy()
-        copy = transformed_data.copy()
-        for target in ["total","transfer_percentage"]:
-            model_path = f"Training\\models\\lightgbm_model_{target}_{config['type']}1.pkl"
-            model = joblib.load(model_path)
-            transformed_data = copy.drop(columns=config[f"columns_to_drop_{target}"])
-            predictions = model.predict(transformed_data)
-            data_predictions[f'Predicted_{target}'] = predictions
+        processor = DataPreProcessor(serving_config)
+        transformed_data=processor.preprocess(serving_data)  
+        transformed_data = new_lag_features(training_data,transformed_data)
 
-        data_predictions.to_csv(f"Serving_predictions\\{config['type']}_pred.csv",index = False)
+        server = DataServer(serving_config,transformed_data)
+        df = server.serve()
+
+        df['ds'] = pd.to_datetime({'year': df['date_time_year'], 'month': df['date_time_month'], 'day':df['date_time_day_of_month']})
+        
+        p = PreProcessor(serving_config)
+        df = p.preprocess(df)
+
+        new_predictor = NewPredictor(df,serving_config)
+        new_predictor.start_new_prediction()
         
         print("done")
-def extract_config():
-    with open("config.json",'r') as f:
-        config = json.load(f)
-    dep_config = config.get("departure_config",{})
-    arriv_config =config.get("arrival_config",{})
-    return [arriv_config]    
 
 def new_lag_features(training_data,prediction_dataset):
     num_lags = [1, 2, 3]

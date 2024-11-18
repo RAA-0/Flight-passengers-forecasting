@@ -4,12 +4,12 @@ from New_model.Training.EventDetection import EventDetector
 from New_model.Training.EventExtraction import EventFeatureExtractor
 
 class PreProcessor:
-    def __init__(self):
-        pass
+    def __init__(self,config):
+        self.config=config
 
     def preprocess(self,data):
-        piepln = Pipeline([("Event Detection",EventDetector()),
+        pipeln = Pipeline([("Event Detection",EventDetector(self.config)),
                           ("Feature Extraction",EventFeatureExtractor())])
-        transformed_data = piepln.fit_transform(data)
+        transformed_data = pipeln.fit_transform(data)
 
         return transformed_data

@@ -50,6 +50,7 @@ class SportsScraper(AbstractScraper):
         ff=FormFixer(self.file_path,self.df_path)
         ff.run()
     def detect_event(self,date):
+        print("sports news detection...")
         def get_event(df,date_):
             events_on_day = []
             #year = date_.year
@@ -59,9 +60,13 @@ class SportsScraper(AbstractScraper):
             if not matching_rows.empty:
                 sport_event = matching_rows.iloc[0]['event']
                 sport_event = ast.literal_eval(sport_event)  
-                events_on_day.extend(sport_event) 
+                for event in sport_event:
+                    if any(word in event.lower() for word in self.config[self.event]['impactful_event']):
+                        events_on_day.extend(['world_cup']) 
+                    else: events_on_day=[]
+            else: events_on_day=[]
             return events_on_day 
-        df = pd.read_csv('New_model\\Scraping\\Sports_\\expanded_sports_df.csv')
+        df = pd.read_csv(self.df_path)
         #df['date'] = pd.to_datetime(df[['year', 'month','day']])
         df['date']=pd.to_datetime(df['date'])
         max_date = df['date'].max()

@@ -10,7 +10,7 @@ class DataPreProcessor:
     def __init__(self,config):
         self.config = config
 
-    def preprocess(self, data,indicator):
+    def preprocess(self, data):
         dtf = DatetimeFeatures(
           variables="date_time",
           features_to_extract=[
@@ -27,12 +27,11 @@ class DataPreProcessor:
             ("Feature Engineering", FeatureExtractor(self.config)),
             ("Cleaning Data", Cleaner(self.config)),
             ("datetime_features", dtf),
-            ("PreProcessing Data", FeaturePreProcessing(indicator,self.config['type'],self.config)),
+            ("PreProcessing Data", FeaturePreProcessing(self.config)),
         ])
 
         transformed_data = pipeline.fit_transform(data)
-        if indicator == 'T':
-            transformed_data.to_csv(self.config['result_path'],index = False)
+        transformed_data.to_csv(self.config.result_path,index = False)
         
         print("PREprocessing done!")    
         return transformed_data

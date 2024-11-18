@@ -13,24 +13,23 @@ class FeatureExtractor:
     def transform(self,X): 
         print("extracting....")
         self.X= self.extractTotalSeats(X)
-        if ("origin" in X.columns):#(only for arrival) extract GDP
+        if self.config.type == 'arrival':
             self.X= self.extractGdp(self.X) 
         self.X = self.extract_percentage(self.X)
         self.X = self.extract_lag_features(self.X)
         print("Feature Extraction Done.")
         return self.X
       
-    ###extrcating capacityy    
     def extractTotalSeats(self,X):
-        with open('Training\\json_files\\aircrafts.json', 'r') as f:
+        with open(self.config.aircraft_json_path) as f:
             aircraft_data = json.load(f)
         X["capacity"]=X["code"].apply(lambda r: aircraft_data.get(r, {}).get('totalSeats', None) )
         return X
     
     def extractGdp(self, X):
-        with open('Training\\json_files\\airports.json', 'r') as a:
+        with open(self.config.airport_json_path) as a:
             airports_data = json.load(a)
-        with open('Training\\json_files\\gdp_per_capita.json', 'r') as g:
+        with open(self.config.gdp_json_path) as g:
             gdp_data = json.load(g)
 
         def get_country_code(row):
@@ -52,8 +51,8 @@ class FeatureExtractor:
         return X
         
     def extract_percentage(self,X):
-        numerator_col = X['transfer']
-        denominator_col = X['total']
+        numerator_col = X[self.config.percentage_columns[1]]
+        denominator_col = X[self.config.percentage_columns[0]]
         result = np.where((numerator_col == 0) | np.isnan(numerator_col), 0, (numerator_col / denominator_col) * 100)
         X['transfer_percentage'] = np.round(result, 2)
 

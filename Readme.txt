@@ -1,4 +1,8 @@
-The link to the percentage change prediction model :
+The New_model directory contains the code for training the new prophet model that predicts the percentage change based on the events and date.
+It also contains a folder (Scraping) that allows us to scrape some websites and get news based on dates.
+a new file (NewPredictor) added to the serving folder of the original project is used to do a new prediction after the first model finishes its prediction, based on a predicted percentage change from the trained prophet model after scraping and searching for events based on the date.
+
+The link to the percentage change prediction model alone:
 https://github.com/RAA-0/Percentage_changes_predictions.git
 
 NOTE:
