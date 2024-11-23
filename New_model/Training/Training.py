@@ -14,7 +14,9 @@ class DataTrainer:
         
     def split_data(self):
         self.data = self.data.sort_values(by='ds')
-        train_data = self.data[self.data['ds'] <= '2023-12-01']  
+        #train_data = self.data[self.data['ds'] <= '2024-12-01']  
+        #test_data = self.data[self.data['ds'] > '2024-12-01']
+        train_data=self.data
         test_data = self.data[self.data['ds'] > '2023-12-01']
         return train_data,test_data
 
@@ -24,6 +26,7 @@ class DataTrainer:
         prophet_model = Prophet(holidays=self.holidays_data)
         for event in self.non_recurrent_events:
             prophet_model.add_regressor(event)
+        prophet_model.add_regressor(f'{self.config.type}_pct_change_lag1')
         return prophet_model
     
     def train(self,model):

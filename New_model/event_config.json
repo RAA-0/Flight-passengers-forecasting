@@ -95,7 +95,93 @@
             ]
         }
     },
-    "ramadan_season": {
+    "early_ramadan": {
+        "type": "variable_dates_events",
+        "source": "custom_function",
+        "years": [
+            2019,
+            2020,
+            2021,
+            2022,
+            2023
+        ],
+        "percentage_changes": {
+            "arrival": [
+                -10.0,
+                -8.20457298301752,
+                -1.72395738106215,
+                -3.310197730715097,
+                -6.189501900659312
+            ],
+            "departure": [
+                -8.0,
+                -9.10847382859683,
+                -3.41247283056257,
+                -8.01516800161386,
+                -4.7185181350688365
+            ]
+        },
+        "dates": {
+            "start": [
+                "2019-05-06",
+                "2020-04-24",
+                "2021-04-12",
+                "2022-04-02",
+                "2023-03-23"
+            ],
+            "end": [
+                "2019-06-04",
+                "2020-05-23",
+                "2021-05-12",
+                "2022-05-01",
+                "2023-04-20"
+            ]
+        }
+    },
+    "mid_ramadan": {
+        "type": "variable_dates_events",
+        "source": "custom_function",
+        "years": [
+            2019,
+            2020,
+            2021,
+            2022,
+            2023
+        ],
+        "percentage_changes": {
+            "arrival": [
+                -10.0,
+                -8.20457298301752,
+                -1.72395738106215,
+                -3.310197730715097,
+                -6.189501900659312
+            ],
+            "departure": [
+                -8.0,
+                -9.10847382859683,
+                -3.41247283056257,
+                -8.01516800161386,
+                -4.7185181350688365
+            ]
+        },
+        "dates": {
+            "start": [
+                "2019-05-06",
+                "2020-04-24",
+                "2021-04-12",
+                "2022-04-02",
+                "2023-03-23"
+            ],
+            "end": [
+                "2019-06-04",
+                "2020-05-23",
+                "2021-05-12",
+                "2022-05-01",
+                "2023-04-20"
+            ]
+        }
+    },
+    "late_ramadan": {
         "type": "variable_dates_events",
         "source": "custom_function",
         "years": [
@@ -184,7 +270,7 @@
             ]
         }
     },
-    "new_year_break": {
+    "new_year": {
         "type": "fixed_dates_events",
         "source": "fixed_event",
         "years": [
@@ -865,49 +951,6 @@
             ]
         }
     },
-    "ramadan_eid_rush": {
-        "type": "",
-        "source": "",
-        "years": [
-            2017,
-            2018,
-            2020,
-            2022,
-            2023
-        ],
-        "percentage_changes": {
-            "arrival": [
-                9.3847293847293,
-                8.3847294729374,
-                -4.2837489273748,
-                3.2837482384729,
-                1.2837472938473
-            ],
-            "departure": [
-                12.3847392838493,
-                11.2837482374874,
-                5.2847392837483,
-                7.2837489274823,
-                3.2384729482374
-            ]
-        },
-        "dates": {
-            "start": [
-                "2017-06-14",
-                "2018-06-03",
-                "2020-04-24",
-                "2022-04-02",
-                "2023-03-23"
-            ],
-            "end": [
-                "2017-06-28",
-                "2018-06-17",
-                "2020-05-08",
-                "2022-04-16",
-                "2023-04-06"
-            ]
-        }
-    },
     "midterm_break": {
         "type": "variable_dates_events",
         "source": "",
@@ -951,49 +994,6 @@
             ]
         }
     },
-    "new_years_eve": {
-        "type": "fixed_dates_events",
-        "source": "fixed_event",
-        "years": [
-            2018,
-            2019,
-            2021,
-            2022,
-            2023
-        ],
-        "percentage_changes": {
-            "arrival": [
-                12.9384729374738,
-                14.2837492838472,
-                10.8374928374838,
-                9.2837492837483,
-                8.8374929384729
-            ],
-            "departure": [
-                10.2838472398374,
-                11.2938472838472,
-                8.8374928374838,
-                8.2837482384729,
-                7.2838472938473
-            ]
-        },
-        "dates": {
-            "start": [
-                "2018-12-31",
-                "2019-12-31",
-                "2021-12-31",
-                "2022-12-31",
-                "2023-12-31"
-            ],
-            "end": [
-                "2019-01-01",
-                "2020-01-01",
-                "2022-01-01",
-                "2023-01-01",
-                "2024-01-01"
-            ]
-        }
-    },
     "hajj_season": {
         "type": "variable_dates_events",
         "source": "custom_function",
@@ -1027,49 +1027,6 @@
             ]
         }
     },
-    "national_day_rush": {
-        "type": "fixed_dates_events",
-        "source": "fixed_event",
-        "years": [
-            2018,
-            2019,
-            2021,
-            2022,
-            2023
-        ],
-        "percentage_changes": {
-            "arrival": [
-                8.8374929378473,
-                7.2837492837483,
-                6.8374928374838,
-                9.8374829384739,
-                10.2837484938473
-            ],
-            "departure": [
-                6.2837489274838,
-                5.2837483948374,
-                8.2837483948374,
-                7.2837489473748,
-                6.2838472838473
-            ]
-        },
-        "dates": {
-            "start": [
-                "2018-11-30",
-                "2019-11-30",
-                "2021-11-30",
-                "2022-11-30",
-                "2023-11-30"
-            ],
-            "end": [
-                "2018-12-04",
-                "2019-12-04",
-                "2021-12-04",
-                "2022-12-04",
-                "2023-12-04"
-            ]
-        }
-    },
     "dubai_shopping_festival": {
         "type": "fixed_dates_events",
         "source": "fixed_event",
@@ -1093,96 +1050,11 @@
             ]
         }
     },
-    "economic_slowdown": {
-        "type": "variable_dates_events",
-        "source": "",
-        "years": [
-            2020
-        ],
-        "percentage_changes": {
-            "arrival": [
-                -12.0
-            ],
-            "departure": [
-                -10.0
-            ]
-        },
-        "dates": {
-            "start": [
-                "2020-01-01"
-            ],
-            "end": [
-                "2020-12-31"
-            ]
-        }
+    "weather_disruptions":{
+        "type": "variable_dates_events"
     },
-    "global_financial_tension": {
-        "type": "variable_dates_events",
-        "source": "",
-        "years": [
-            2017
-        ],
-        "percentage_changes": {
-            "arrival": [
-                -5.0
-            ],
-            "departure": [
-                -3.0
-            ]
-        },
-        "dates": {
-            "start": [
-                "2017-04-01"
-            ],
-            "end": [
-                "2017-04-30"
-            ]
-        }
-    },
-    "oil_price_surge": {
-        "type": "variable_dates_events",
-        "source": "",
-        "years": [
-            2019
-        ],
-        "percentage_changes": {
-            "arrival": [
-                3.0
-            ],
-            "departure": [
-                -2.0
-            ]
-        },
-        "dates": {
-            "start": [
-                "2019-07-01"
-            ],
-            "end": [
-                "2019-07-31"
-            ]
-        }
-    },
-    "winter_holiday_season": {
-        "type": "fixed_dates_events",
-        "source": "fixed_event",
-        "years": [
-            2022
-        ],
-        "percentage_changes": {
-            "arrival": [
-                18.0
-            ],
-            "departure": [
-                14.0
-            ]
-        },
-        "dates": {
-            "start": [
-                "2022-12-20"
-            ],
-            "end": [
-                "2023-01-05"
-            ]
-        }
+    "no_major_event":{
+        "type": "variable_dates_events"
     }
+
 }

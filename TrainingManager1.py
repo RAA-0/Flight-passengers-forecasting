@@ -1,4 +1,4 @@
-from New_model.Training.Preprocessingg import EventFeatureExtractor
+from New_model.Training.EventExtraction import EventFeatureExtractor
 from New_model.Training.Training import DataTrainer
 from object_models.pax_factory import PaxFactory
 import pandas as pd

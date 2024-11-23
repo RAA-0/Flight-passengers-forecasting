@@ -1,0 +1,6 @@
+year,start_date,end_date,arrival_percentage_change,departure_percentage_change,arrival_pct_change_lag1,mean,event_christmas_season,event_corona,event_dubai_marathon,event_early_ramadan,event_eid_al_adha,event_eid_al_fitr,event_expo_2020,event_formula_1_grand_prix,event_hajj_season,event_late_ramadan,event_mid_ramadan,event_midterm_break,event_new_year,event_no_major_event,event_shopping_festival,event_spring_season,event_summer_season,event_uae_national_day,event_weather_disruptions,event_world_cup
+2027,,,0,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+2026,,,-19,,-28,-25,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+2028,,,29,,19,21,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+2029,,,-15,,-12,-17,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0
+2027,,,9,13,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
