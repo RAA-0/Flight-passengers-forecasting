@@ -21,7 +21,7 @@ class CustomizeData:
         return X
     
     def filter(self,X):
-        X = X[~X[self.config.date_time_field].dt.year.isin([2018,2019,2020,2021])]
+        X = X[~X[self.config.date_time_field].dt.year.isin([2018,2019])]
         return X
     
     def select_and_rename_columns(self,X):

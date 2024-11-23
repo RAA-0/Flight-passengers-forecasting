@@ -72,7 +72,7 @@ class ArrivalPax(AbstractPax):
 
     @property
     def na_columns(self):
-        return ['date_time', 'origin', 'airline', 'ac_type','capacity','GDP','disembarking','total_lag1', 'total_lag2', 'total_lag3', 'transfer_percentage_lag1', 'transfer_percentage_lag2', 'transfer_percentage_lag3','transfer']
+        return ['date_time', 'origin', 'airline', 'ac_type','capacity','GDP','disembarking','transfer']
 
     @property
     def columns_to_check(self):

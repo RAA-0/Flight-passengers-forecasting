@@ -14,7 +14,7 @@ class EventDetector:
     
     def transform(self,X):
         event_list=[]
-        classes = [self.recurrent_event,self.news_event]
+        classes = [self.news_event]
         for _,row in X.iterrows():
             event=[]
             for event_config in classes:

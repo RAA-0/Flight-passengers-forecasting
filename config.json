@@ -1,12 +1,12 @@
 {
-    "arrival_data_PATH": "data\\FlightML\\FLIGHT_LOAD_ML_202310161702_arrival.csv",
-    "arrival_result_PATH": "data\\Transformed_data\\Transformed_arrival.csv",
-    "arrival_customized_PATH": "data\\customized_data\\arrival_customized.csv",
+    "arrival_data_PATH": "C:\\Users\\Lenovo\\Desktop\\New folder (2)\\FLIGHT_LOAD_ML_202310161702_arrival.csv",
+    "arrival_result_PATH": "C:\\Users\\Lenovo\\Desktop\\New folder (2)\\Transformed_arrival.csv",
+    "arrival_customized_PATH": "C:\\Users\\Lenovo\\Desktop\\New folder (2)\\arrival_customized.csv",
     "arrival_events_detected_PATH":"data\\Serving_data\\arrival_events_detected.csv",
 
-    "departure_data_PATH": "data\\FlightML\\departure_dataset.csv",
-    "departure_result_PATH": "data\\Transformed_data\\Transformed_departure.csv",
-    "departure_customized_PATH": "data\\customized_data\\departure_customized.csv",
+    "departure_data_PATH": "C:\\Users\\Lenovo\\Desktop\\New folder (2)\\departure_dataset.csv",
+    "departure_result_PATH": "C:\\Users\\Lenovo\\Desktop\\New folder (2)\\Transformed_departure.csv",
+    "departure_customized_PATH": "C:\\Users\\Lenovo\\Desktop\\New folder (2)\\departure_customized.csv",
     "departure_events_detected_PATH":"data\\Serving_data\\departure_events_detected.csv",
   
     "airports_JSON_PATH": "Training\\json_files\\airports.json",

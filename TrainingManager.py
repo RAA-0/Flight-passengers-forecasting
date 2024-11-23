@@ -9,7 +9,7 @@ def main():
     for flighttype in ['arrival','departure']:
         config = PaxFactory.create_config(flighttype,'training')
         data = pd.read_csv(config.data_path,index_col=False,parse_dates= config.date_columns)
-        #Preprocess the data 
+
         preprocessor = DataPreProcessor(config)
         transformed_data=preprocessor.preprocess(data)
         transformed_data = pd.read_csv(config.result_path)
