@@ -4,7 +4,7 @@ from object_models.pax_factory import PaxFactory
 import pandas as pd
 
 def main():
-    data = pd.read_csv('New_model\\data\\Training\\TrainingData.csv')
+    data = pd.read_csv('New_model\\data\\Training\\TrainingData2.csv')
     process = EventFeatureExtractor()
     transformed_data = process.transform(data)
     for pax_type in ['arrival','departure']:

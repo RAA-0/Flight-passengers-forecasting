@@ -15,7 +15,7 @@ class EventFeatureExtractor:
 
     def transform(self,X):
         print('extracting...')
-        X= self.lag_ffeatures(X)
+        #X= self.lag_ffeatures(X)
         for event in self.non_recurrent_events:
             X[event] = X['event'].apply(lambda events: 1 if event in events else 0)
         return X
