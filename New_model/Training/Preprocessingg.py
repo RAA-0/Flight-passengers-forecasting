@@ -5,7 +5,8 @@ from New_model.Training.EventExtraction import EventFeatureExtractor
 
 class PreProcessor:
     def __init__(self,config):
-        self.config=config
+        self.config = config 
+
 
     def preprocess(self,data):
         pipeln = Pipeline([("Event Detection",EventDetector(self.config)),

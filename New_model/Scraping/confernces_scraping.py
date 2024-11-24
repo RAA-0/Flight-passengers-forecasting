@@ -118,11 +118,12 @@ class ConferenceScraper(AbstractScraper):
             if not matching_rows.empty:
                 conference_event = matching_rows.iloc[0]['conferences']
                 conference_event = ast.literal_eval(conference_event)  
-                if any(word in conference_event for word in self.config[self.event]['impactful_event']):
-                    events.extend(conference_event)
-                else: events = []
+                for conference in conference_event:
+                    for key, value in self.config[self.event]['impactful_event'].items():
+                        if all(word in conference.lower() for word in key):
+                            events.append(value)
 
-            return events
+            return list(set(events))
 
         df['date'] = pd.to_datetime(df[['year', 'month','day']])
         df['date']=pd.to_datetime(df['date'])
@@ -130,6 +131,7 @@ class ConferenceScraper(AbstractScraper):
         if date_input<=max_date:
             events = get_event()
         else:
+            return []
             def get_month(target_value):
                 for key, value in self.mapping.items():
                     if value == target_value:

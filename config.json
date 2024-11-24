@@ -29,6 +29,9 @@
     "arrival_prophet_model_PATH":"New_model\\models\\prophet_arrival_model.joblib",
     "departure_prophet_model_PATH":"New_model\\models\\prophet_departure_model.joblib",
 
+    "prophet_evaluation_data_PATH":"ProphetEvaluation\\eval.csv",
+    "prophet_evaluation_results_PATH":"eval_results.csv",
+
     "arrival_testing_results":{
                             "total":"data\\testing_pred\\total_arrival_predictions.csv",
                             "transfer_percentage":"data\\testing_pred\\transfer_percentage_arrival_predictions.csv"

@@ -114,7 +114,7 @@ class GlobalHealthScraper(AbstractScraper):
                         health_crisis = matching_rows.iloc[0]['health_crisis_month']
             else: return []
 
-        return ['corona'] if health_crisis==1 else []
+        return ['pandemic'] if health_crisis==1 else []
 
     def years_indices(self,start_year=None):
         self.index_of_year=defaultdict(str)

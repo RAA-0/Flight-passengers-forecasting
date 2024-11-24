@@ -5,17 +5,27 @@ from hijri_converter import Hijri, Gregorian
 class ReligiousEvent():
     def __init__(self):
         self.islamic_holidays = {"ramadan_season":[(9, 1),(9, 30)],"hajj_season":[(12,5),(12,15)],"eid_al_fitr":[(10, 1), (10, 3)],"eid_al_adha": [(12, 10), (12, 13)]}
-        self.seasons_dates={"summer_season":[(6,1),(9,1)],"spring_season":[(3,20),(4,20)],"christmas_season":[(12,23),(12,30)],"new_years_break":[(12,31),(1,6)]} 
+        self.seasons_dates={"summer_season":[(6,1),(9,1)],"spring_season":[(3,20),(4,20)],"christmas_season":[(12,23),(12,30)],"new_year":[(12,31),(1,3)]} 
       
     def detect_event(self,date):
         events=[]
         for holiday in self.islamic_holidays.keys(): 
             start,end=self.get_dates_(pd.to_datetime(date).year,holiday) 
             if pd.to_datetime(start)<=pd.to_datetime(date)<=pd.to_datetime(end):
-                events.append(holiday)
+                if holiday=="ramadan_season":
+                    if pd.to_datetime(start)<=pd.to_datetime(date)<=pd.to_datetime(start)+timedelta(days=15):
+                        events.append("early_ramadan")
+                    if pd.to_datetime(start)+timedelta(days=15)<pd.to_datetime(date)<=pd.to_datetime(start)+timedelta(days=25):
+                        events.append("mid_ramadan")
+                    if pd.to_datetime(start)+timedelta(days=25)<pd.to_datetime(date)<=pd.to_datetime(end):
+                        events.append("late_ramadan")
+                else:
+                    events.append(holiday)
             if holiday=="hajj":
-                if pd.to_datetime(start)- timedelta(days=4)<=pd.to_datetime(date)<pd.to_datetime(start):
+                if pd.to_datetime(start)- timedelta(days=5)<=pd.to_datetime(date)<pd.to_datetime(start):
                     events.append("pre_hajj_season")
+            
+
         for fixed_holiday in self.seasons_dates.keys():
             start,end = self.get_dates(pd.to_datetime(date).year,fixed_holiday)
             if  pd.to_datetime(start)<=pd.to_datetime(date)<=pd.to_datetime(end):
@@ -40,7 +50,7 @@ class ReligiousEvent():
     def get_dates(self,year,season):
         start_date = date(year,self.seasons_dates[season][0][0],self.seasons_dates[season][0][1])
         end_date = date(year,self.seasons_dates[season][1][0],self.seasons_dates[season][1][1])
-        if season == 'new_years_break':
+        if season == 'new_year':
             end_date = date(year+1,self.seasons_dates[season][1][0],self.seasons_dates[season][1][1])
         return start_date,end_date
         

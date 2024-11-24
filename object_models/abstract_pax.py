@@ -3,7 +3,7 @@ class AbstractPax:
     def __init__(self,phase):
         self.read_config_file()
         self.phase = phase 
-
+    
     @property
     def data_path(self):
         return self._data_path
@@ -105,7 +105,23 @@ class AbstractPax:
     
     @property
     def columns_to_keep(self):
-        return ['flight_id','ds','event','total','predicted_total','capacity']
+        if self.phase == 'serving':
+            return ['flight_id','ds','event','total','predicted_total','capacity']
+        if self.phase =='evaluation':
+            return ['ds','event']
+
+
+    @property
+    def evaluation_set(self):
+        return self.config['prophet_evaluation_data_PATH']
+    
+    @property
+    def evaluation_result(self):
+        return self.config['prophet_evaluation_results_PATH']
+    
+    @property
+    def evaluation_columns(self):
+        return ['ds','event','Predicted_arrival_changes','Predicted_departure_changes']
     
     def read_config_file(self):
         with open("config.json", "r") as json_file:

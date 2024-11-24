@@ -62,7 +62,7 @@
             ]
         }
     },
-    "corona": {
+    "pandemic": {
         "type": "variable_dates_events",
         "source": "https://www.who.int/news",
         "years": [
@@ -1054,6 +1054,9 @@
         "type": "variable_dates_events"
     },
     "no_major_event":{
+        "type": "variable_dates_events"
+    },
+    "global_business_summit":{
         "type": "variable_dates_events"
     }
 

@@ -11,7 +11,7 @@
         "file_path":"New_model\\Scraping\\Sports_\\sportsnews.json",
         "df_path":"New_model\\Scraping\\Sports_\\expanded_sports_df.csv",
         "compressed_df_path":"New_model\\Scraping\\Sports_\\compressed_sports_df.csv",
-        "impactful_event":["fifa world cup"]
+        "impactful_event":{"fifa world cup":"world_cup","formula 1 grand prix":"formula1"}
     },
     "various_events":{
         "website":"https://www.visitdubai.com/en/whats-on/dubai-events-calendar?tags=",
@@ -22,12 +22,18 @@
         "website":"https://www.allconferencealert.com/dubai.html",
         "file_path":"New_model\\Scraping\\conferences\\conference_news.json",
         "df_path":"New_model\\Scraping\\conferences\\conferences_df.csv",
-        "impactful_event":["summitt"]
+        "impactful_event":{"global business summit":"global_business_summit"}
     },
     "disruptions":{
         "website":"https://media.dubaiairports.ae/?s={s}&q=disruption+",
         "file_path":"New_model\\Scraping\\Disruptions\\disruption_news.json",
         "df_path":"New_model\\Scraping\\Disruptions\\disruptions_df.csv",
         "keywords":["disruption due to weather","weather disruption"]
+    },
+    "diwali":{
+        "website":"https://www.drikpanchang.com/diwali/diwali-puja-calendar.html?year=",
+        "file_path":"New_model\\Scraping\\diwali\\diwali.json",
+        "df_path":"New_model\\Scraping\\diwali\\diwali_df.csv"
+
     }
 }

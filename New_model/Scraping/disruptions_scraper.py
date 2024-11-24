@@ -73,7 +73,7 @@ class DisruptionsScraper(AbstractScraper):
         if not matching_rows.empty:
             news = matching_rows.iloc[0]['news']
             if any(word in news.lower() for word in self.config[self.event]['keywords']):
-                    events.append('disruption')
+                    events.append('weather_disruptions')
         return events 
 
 

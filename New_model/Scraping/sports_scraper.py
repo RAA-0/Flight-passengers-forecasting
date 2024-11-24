@@ -61,9 +61,9 @@ class SportsScraper(AbstractScraper):
                 sport_event = matching_rows.iloc[0]['event']
                 sport_event = ast.literal_eval(sport_event)  
                 for event in sport_event:
-                    if any(word in event.lower() for word in self.config[self.event]['impactful_event']):
-                        events_on_day.extend(['world_cup']) 
-                    else: events_on_day=[]
+                    for key, value in self.config[self.event]['impactful_event'].items():
+                        if all(word in event.lower() for word in key):
+                            events_on_day.append(value)
             else: events_on_day=[]
             return events_on_day 
         df = pd.read_csv(self.df_path)

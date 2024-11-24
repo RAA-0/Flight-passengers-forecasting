@@ -5,7 +5,7 @@ import pandas as pd
 
 class EventDetector:
     def __init__(self,config):
-        self.config = config
+        self.config =config
         self.news_event = NewsEvent()
         self.recurrent_event = ReligiousEvent()
 
@@ -14,13 +14,17 @@ class EventDetector:
     
     def transform(self,X):
         event_list=[]
-        classes = [self.news_event]
+        classes = [self.news_event,self.recurrent_event]
         for _,row in X.iterrows():
             event=[]
             for event_config in classes:
                 event.extend(event_config.detect_event(pd.to_datetime(row['ds'])))
+            if event ==[]:
+                event=['no_major_event']
             event_list.append(event)
-        X['event']=event_list
+        if event_list==[]:
+            event_list=['no_major_event']
+        X['event']= event_list
         X[self.config.columns_to_keep].to_csv(self.config.events_detected_result_path,index=False)
         return X[self.config.columns_to_keep]
         
