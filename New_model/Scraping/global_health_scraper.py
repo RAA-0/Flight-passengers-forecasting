@@ -99,7 +99,6 @@ class GlobalHealthScraper(AbstractScraper):
         if not matching_rows.empty:
             health_crisis = matching_rows.iloc[0]['health_crisis_month']
         else:
-            return []
             if date_input < datetime.now() or ((date_input.year == datetime.now().year) and (date_input.month== datetime.now().month)):
                 scraper = GlobalHealthScraper([year])
                 new_news = scraper.run()

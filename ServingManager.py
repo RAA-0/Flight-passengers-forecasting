@@ -11,7 +11,7 @@ from New_model.Training.Preprocessingg import PreProcessor
 
         
 def main():
-    for flighttype in ['arrival']:
+    for flighttype in ['arrival','departure']:
         serving_config = PaxFactory.create_config(flighttype,'serving')
         serving_data = pd.read_csv(serving_config.serving_data_path,index_col=False,parse_dates= serving_config.date_columns)
         training_data = pd.read_csv(serving_config.training_result_path,index_col=False)
