@@ -3,8 +3,6 @@ It also contains a folder (Scraping) that allows us to scrape some websites and 
 a new file (NewPredictor) added to the serving folder of the original project is used to do a new prediction after the first model finishes its prediction, based on a predicted percentage change from the trained prophet model after scraping and searching for events based on the date.
 and lastly i added some cases where i statically added some events on specific dates and made the prophet model predict on these cases in order to evaluate its performance.
 
-The link to the percentage change prediction model alone:
-https://github.com/RAA-0/Percentage_changes_predictions.git
 
 NOTE:
 - must add the original datasets to the data/FlightML folder 
