@@ -10,4 +10,4 @@ class PaxFactory:
         elif config_type == "departure":
             return DeparturePax(phase)
         else:
-            raise ValueError("Invalid configuration type")
+            raise ValueError("Invalid type")

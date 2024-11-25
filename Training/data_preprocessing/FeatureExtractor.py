@@ -41,7 +41,7 @@ class FeatureExtractor:
             if country_code=='':
                 return None
             else:
-                year = str(pd.to_datetime(row["date_time"]).year)  # Convert year to string
+                year = str(pd.to_datetime(row["date_time"]).year) 
                 try:
                     gdp = float(gdp_data.get(country_code, {}).get(year, None))
                 except: 
@@ -68,7 +68,7 @@ class FeatureExtractor:
                     for i in range(1,4):
                         lagged_values = group[lag_col].shift(i)
                         mask = (group['flt_number'] != flght_nb) | (group['flt_number'] != group['flt_number'].shift(i))
-                        mask.iloc[:i] = True  # Mask initial values within lag range
+                        mask.iloc[:i] = True  
                         lagged_values[mask] = np.nan
                         lagged_group[f'{lag_col}_lag{i}'] = lagged_values
                 lagged_dfs.append(lagged_group)

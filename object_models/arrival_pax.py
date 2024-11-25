@@ -67,10 +67,6 @@ class ArrivalPax(AbstractPax):
         return 'disembarking'
    
     @property
-    def illogical_order_cols(self):
-        return [ {'max':'capacity', 'column':'total'}, {'max':'total', 'column':'disembarking'}, {'max':'total', 'column':['disembarking', 'transfer']}]
-
-    @property
     def na_columns(self):
         return ['date_time', 'origin', 'airline', 'ac_type','capacity','GDP','disembarking','transfer']
 

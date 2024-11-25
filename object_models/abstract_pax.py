@@ -47,9 +47,6 @@ class AbstractPax:
     def renamed_columns(self):
         return []
 
-    @property
-    def illogical_order_cols(self):
-        return []
     
     @property
     def na_columns(self):
@@ -75,9 +72,6 @@ class AbstractPax:
     def percentage_columns(self):
         return []
     
-    @property
-    def encoding_method(self):
-        return "onehot_encoding"
    
     @property
     def lag_columns(self):
@@ -90,14 +84,6 @@ class AbstractPax:
     @property
     def dependent_variables(self):
         return []
-
-    @property
-    def use_encoder_model(self):
-        return False
- 
-    @property
-    def pareto_percentage(self):
-        return 0.3
    
     @property
     def na_to_0_columns(self):

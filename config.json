@@ -1,27 +1,24 @@
 {
-    "arrival_data_PATH": "C:\\Users\\Lenovo\\Desktop\\New folder (2)\\FLIGHT_LOAD_ML_202310161702_arrival.csv",
-    "arrival_result_PATH": "C:\\Users\\Lenovo\\Desktop\\New folder (2)\\Transformed_arrival.csv",
-    "arrival_customized_PATH": "C:\\Users\\Lenovo\\Desktop\\New folder (2)\\arrival_customized.csv",
+    "arrival_data_PATH": "data\\FlightML\\arrival_dataset.csv",
+    "arrival_result_PATH": "data\\Tranformed_data\\Transformed_arrival.csv",
+    "arrival_customized_PATH": "data\\customized_data\\arrival_customized.csv",
     "arrival_events_detected_PATH":"data\\Serving_data\\arrival_events_detected.csv",
 
-    "departure_data_PATH": "C:\\Users\\Lenovo\\Desktop\\New folder (2)\\departure_dataset.csv",
-    "departure_result_PATH": "C:\\Users\\Lenovo\\Desktop\\New folder (2)\\Transformed_departure.csv",
-    "departure_customized_PATH": "C:\\Users\\Lenovo\\Desktop\\New folder (2)\\departure_customized.csv",
+    "departure_data_PATH": "data\\FlightML\\departure_dataset.csv",
+    "departure_result_PATH": "data\\Tranformed_data\\Transformed_departure.csv",
+    "departure_customized_PATH": "data\\customized_data\\departure_customized.csv",
     "departure_events_detected_PATH":"data\\Serving_data\\departure_events_detected.csv",
   
     "airports_JSON_PATH": "Training\\json_files\\airports.json",
     "aircraft_JSON_PATH": "Training\\json_files\\aircrafts.json",
     "gdp_JSON_PATH": "Training\\json_files\\gdp_per_capita.json",
     "lgbm_model_path":"Training\\models\\",
-    "model_weights_PATH": "./assets/generated/model_weights/",
 
     "arrival_serving_PATH":"data\\Serving_data\\arrival_serving_data.csv",
     "arrival_serving_result_PATH": "data\\Serving_data\\arrival_result.csv",
-    "arrival_serving_customized_PATH": "./assets/generated/serving/customized_data_arrival.csv",
    
     "departure_serving_PATH":"data\\Serving_data\\departure_serving_data.csv",
     "departure_serving_result_PATH": "data\\Serving_data\\departure_result.csv",
-    "departure_serving_customized_PATH": "./assets/generated/serving/customized_data_arrival.csv",
   
     "arrival_encoder_path": "Training\\encoders\\encoder_arrival.pkl",
     "departure_encoder_path": "Training\\encoders\\encoder_departure.pkl",

@@ -63,10 +63,6 @@ class DeparturePax(AbstractPax):
 
 
     @property
-    def illogical_order_cols(self):
-        return [ {'max':'capacity', 'column':'total'}, {'max':'total', 'column':'joining'}, {'max':'total', 'column':['joining', 'transfer']}]
-
-    @property
     def na_columns(self):
         return ['date_time', 'destination', 'airline','ac_type','capacity','joining', 'transfer', 'total_lag1', 'total_lag2', 'total_lag3', 'transfer_percentage_lag1', 'transfer_percentage_lag2', 'transfer_percentage_lag3']
 
