@@ -6,7 +6,7 @@ from Training.DataTrainer import DataTrain
 import json
 from object_models.pax_factory import PaxFactory
 from serving.serving_data import DataServer
-from serving.NewPredictor import NewPredictor
+from serving.NewPredictor2 import NewPredictor
 from New_model.Training.Preprocessingg import PreProcessor
 
         

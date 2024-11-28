@@ -41,7 +41,8 @@ class FeatureExtractor:
             if country_code=='':
                 return None
             else:
-                year = str(pd.to_datetime(row["date_time"]).year) 
+                #year = str(pd.to_datetime(row["date_time"]).year) 
+                year = '2023' 
                 try:
                     gdp = float(gdp_data.get(country_code, {}).get(year, None))
                 except: 

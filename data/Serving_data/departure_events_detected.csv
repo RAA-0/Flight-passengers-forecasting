@@ -1,16 +1,4 @@
-ds,event
-2024-12-23,['no_major_event']
-2025-01-04,"['International Conference on Recent Advances in Science, Engineering and Technology (ICRASET)', 'International Conference on Tourism Research and Hospitality (ICTRH)', 'International Conference on Networking, Communication and Computing Technology (ICNCCT)', 'International Conference on Educational Leadership (ICEL)', 'International Conference on Multidisciplinary Research (ICMR)', 'International Conference on Mechanical, Industrial and Production Engineering (ICMIPE)', 'International Conference on Electrochemistry, Material Science and Engineering (ICEMSE)', 'International Conference on Petroleum Engineering and Refinery (ICPER)', 'Global Business Summit (GBS)', 'International Conference on Nutrition and Food Science (ICNFS)', 'International Conference on Electrical, Electronics & Computer Science (ICEECS)', 'International Conference on Sport Economics & Sport Management (ICSESM)', 'International Conference on Advances in Business Management and Information Science (ICABMIS)', 'Global Conference on Pharma Industry and Medical Devices (GCPIMD)', 'International Conference on Library and Information Science (ICLIS)', 'World Conference on Applied Science, Engineering and Technology (WCASET)', 'International Conference on Green Energy and Environmental Technology (ICGEET)', 'International Conference on Social Science, Teaching and Learning (ICSSTL)', 'World Conference on Cyber Security and Ethical Hacking (WCCSEH)', 'International Conference on Biodiversity, Ecology and Climate Change (ICBECC)']"
-2025-01-25,['no_major_event']
-2025-01-25,['no_major_event']
-2025-01-25,['no_major_event']
-2025-12-23,['no_major_event']
-2026-03-05,['no_major_event']
-2026-03-05,['no_major_event']
-2026-03-05,['no_major_event']
-2026-03-05,['no_major_event']
-2026-03-05,['no_major_event']
-2026-03-13,['weather_disruptions']
-2026-11-10,['world_cup']
-2026-12-23,['no_major_event']
-2027-12-23,['no_major_event']
+flight_id,ds,event,predicted_total,capacity
+2302036680AODB-UFISD-final,2026-05-23,['hajj_season'],309.5720261155669,436.0
+2302039124AODB-UFISD-final,2026-05-22,['hajj_season'],125.67518430022226,186.0
+2302039558AODB-UFISD-final,2026-05-22,['hajj_season'],160.99297312058198,186.0
